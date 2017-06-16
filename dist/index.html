@@ -71,7 +71,7 @@
             margin: 40px;
         }
 
-        .btn {
+        ._btn {
             display: inline-block;
             padding: 10px 0;
             width: 212px;
@@ -82,15 +82,21 @@
             color: #eee;
         }
 
-        .btn:hover {
+        ._btn:hover {
             font-weight: 600;
+            text-decoration: none;
+            color: #eee;
         }
 
-        .btn-primary {
+        ._btn:focus {
+            border: none;
+        }
+
+        ._btn-primary {
             background-color: cadetblue;
         }
 
-        .btn-ghost {
+        ._btn-ghost {
             background-color: transparent;
             border: 1px solid #eee;
         }
@@ -108,18 +114,17 @@
         <div class="hero-wrapper">
             <div class="hero-text-wrapper">
                 <h1 class="hero-title">#KeepingUpWithTheHoffmans</h1>
-                <a class="btn btn-primary hero-button"
+                <a class="_btn _btn-primary hero-button"
                     href="#">Add Memories</a>
-                <a class="btn btn-ghost"
-                    href="#">View Gallery</a>
+                <a class="_btn _btn-ghost"
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#gallery-modal">View Gallery</a>
             </div>
             <div class="hero-image-wrapper">
                 <img src="images/hearts_hero.jpg">
             </div>
         </div>
-
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#gallery-modal">Open Modal</button>
 
         <!-- Gallery Modal -->
         <div id="gallery-modal" class="modal fade" role="dialog">
@@ -134,7 +139,7 @@
             <div class="modal-body" id="gallery-modal-body">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="_btn _btn-default" data-dismiss="modal">Close</button>
             </div>
             </div>
 
