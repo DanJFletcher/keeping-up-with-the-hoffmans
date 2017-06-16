@@ -115,7 +115,9 @@
             <div class="hero-text-wrapper">
                 <h1 class="hero-title">#KeepingUpWithTheHoffmans</h1>
                 <a class="_btn _btn-primary hero-button"
-                    href="#">Add Memories</a>
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#upload-modal">Add Memories</a>
                 <a class="_btn _btn-ghost"
                     href="#"
                     data-toggle="modal"
@@ -128,23 +130,48 @@
 
         <!-- Gallery Modal -->
         <div id="gallery-modal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+            <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Gallery</h4>
-            </div>
-            <div class="modal-body" id="gallery-modal-body">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="_btn _btn-default" data-dismiss="modal">Close</button>
-            </div>
-            </div>
+                <!-- Modal content-->
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Gallery</h4>
+                </div>
+                <div class="modal-body" id="gallery-modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="_btn _btn-default" data-dismiss="modal">Close</button>
+                </div>
+                </div>
 
+            </div>
         </div>
+
+        <!-- Upload Modal -->
+        <div id="upload-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Upload an Image</h4>
+                    </div>
+                    <div class="modal-body" id="gallery-modal-body">
+                        <form onSubmit="return uploadFile()">
+                            <input type="file" id="file-upload" />
+                            <button class="_btn _btn-primary" type="submit">Submit</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="_btn _btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
+
         <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

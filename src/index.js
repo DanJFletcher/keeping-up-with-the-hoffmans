@@ -39,3 +39,15 @@ dbx.filesListFolder({path: '/apps/keepingupwiththehoffmans'})
   .catch(function(error) {
     console.log(error);
   });
+
+window.uploadFile = function() {
+  let fileInput = document.getElementById('file-upload');
+  let file = fileInput.files[0];
+  dbx.filesUpload({ path: '/apps/keepingupwiththehoffmans/' + file.name, contents: file })
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+}
