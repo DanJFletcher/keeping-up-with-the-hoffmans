@@ -8,5 +8,8 @@
     "build": "webpack"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dropbox": "^2.5.4"
+  }
 }
