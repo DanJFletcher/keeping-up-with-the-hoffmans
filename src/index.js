@@ -11,19 +11,20 @@ dbx.filesListFolder({path: '/apps/keepingupwiththehoffmans'})
     console.log(response);
     response.entries.forEach(function(entry) {
       console.log(entry.name);
-      dbx.filesGetTemporaryLink({
-        path: '/apps/keepingupwiththehoffmans/' + entry.name
+      dbx.filesGetThumbnail({
+        path: '/apps/keepingupwiththehoffmans/' + entry.name,
+        size: {".tag":"w1024h768"}
       })
         .then(function(response) {
           console.log(response);
 
           let img = document.createElement('img');
-          img.src = response.link;
+          img.src = window.URL.createObjectURL(response.fileBlob);
           img.className = 'thumbnail'
 
           let anchor = document.createElement('a');
           anchor.href = img.src;
-          anchor.dataset.lightbox = "gallery";
+          anchor.dataset.lightbox = 'gallery';
 
           // select the modal body
           let modalBody = document.getElementById("gallery-modal-body");
