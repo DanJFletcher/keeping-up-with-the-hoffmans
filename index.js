@@ -3,7 +3,7 @@ import LightBox from 'lightbox2';
 
 const dbx = new Dropbox(
     {
-        accessToken: 'VMxqipghP2AAAAAAAAAAXQNBau2yjzg236l8yUzfGRGgd3rqtrZ4tf4wyViQCwle'
+        accessToken: 'VMxqipghP2AAAAAAAAAAbirquOZ1_SGZ9-QiTbAcfE8nTcWcE7U1GlCNYx1oA-r5'
     });
 
 dbx.filesListFolder({path: '/apps/keepingupwiththehoffmans'})
