@@ -2896,16 +2896,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 const dbx = new __WEBPACK_IMPORTED_MODULE_0_dropbox___default.a(
     {
-        accessToken: 'VMxqipghP2AAAAAAAAAAbirquOZ1_SGZ9-QiTbAcfE8nTcWcE7U1GlCNYx1oA-r5'
+        accessToken: 'VMxqipghP2AAAAAAAAAAcA0t8HpDYeQMrris9lrlja5OhdoCS1ZTOquO6GEEzD2T'
     });
 
-dbx.filesListFolder({path: '/apps/keepingupwiththehoffmans'})
+dbx.filesListFolder({path: ''})
   .then(function(response) {
     console.log(response);
     response.entries.forEach(function(entry) {
       console.log(entry.name);
       dbx.filesGetThumbnail({
-        path: '/apps/keepingupwiththehoffmans/' + entry.name,
+        path: '/' + entry.name,
         size: {".tag":"w1024h768"}
       })
         .then(function(response) {
