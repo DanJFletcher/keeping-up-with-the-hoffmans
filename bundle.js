@@ -2936,7 +2936,7 @@ dbx.filesListFolder({path: ''})
 window.uploadFile = function() {
   let fileInput = document.getElementById('file-upload');
   let file = fileInput.files[0];
-  dbx.filesUpload({ path: '/apps/keepingupwiththehoffmans/' + file.name, contents: file })
+  dbx.filesUpload({ path: '/' + file.name, contents: file })
     .then(function(response) {
       console.log(response);
     })
