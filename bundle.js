@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 22);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1235,7 +1235,7 @@ return Promise;
 
 })));
 //# sourceMappingURL=es6-promise.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17), __webpack_require__(21)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18), __webpack_require__(22)))
 
 /***/ }),
 /* 2 */
@@ -1245,9 +1245,9 @@ return Promise;
  * Module dependencies.
  */
 
-var Emitter = __webpack_require__(7);
-var reduce = __webpack_require__(18);
-var requestBase = __webpack_require__(19);
+var Emitter = __webpack_require__(8);
+var reduce = __webpack_require__(19);
+var requestBase = __webpack_require__(20);
 var isObject = __webpack_require__(4);
 
 /**
@@ -1297,7 +1297,7 @@ function isHost(obj) {
  * Expose `request`.
  */
 
-var request = module.exports = __webpack_require__(20).bind(null, Request);
+var request = module.exports = __webpack_require__(21).bind(null, Request);
 
 /**
  * Determine XHR.
@@ -2359,7 +2359,7 @@ module.exports = isObject;
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Dropbox = __webpack_require__(10);
+var Dropbox = __webpack_require__(11);
 
 module.exports = Dropbox;
 
@@ -2384,7 +2384,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (root, factory) {
     if (true) {
         // AMD. Register as an anonymous module.
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(16)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(17)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -2883,6 +2883,70 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 /* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_dropbox__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_dropbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_dropbox__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lightbox2__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lightbox2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lightbox2__);
+
+
+
+const dbx = new __WEBPACK_IMPORTED_MODULE_0_dropbox___default.a(
+    {
+        accessToken: 'VMxqipghP2AAAAAAAAAAXQNBau2yjzg236l8yUzfGRGgd3rqtrZ4tf4wyViQCwle'
+    });
+
+dbx.filesListFolder({path: '/apps/keepingupwiththehoffmans'})
+  .then(function(response) {
+    console.log(response);
+    response.entries.forEach(function(entry) {
+      console.log(entry.name);
+      dbx.filesGetThumbnail({
+        path: '/apps/keepingupwiththehoffmans/' + entry.name,
+        size: {".tag":"w1024h768"}
+      })
+        .then(function(response) {
+          console.log(response);
+
+          let img = document.createElement('img');
+          img.src = window.URL.createObjectURL(response.fileBlob);
+          img.className = 'thumbnail'
+
+          let anchor = document.createElement('a');
+          anchor.href = img.src;
+          anchor.dataset.lightbox = 'gallery';
+
+          // select the modal body
+          let modalBody = document.getElementById("gallery-modal-body");
+          modalBody.appendChild(anchor);
+          anchor.appendChild(img);
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    });
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+
+window.uploadFile = function() {
+  let fileInput = document.getElementById('file-upload');
+  let file = fileInput.files[0];
+  dbx.filesUpload({ path: '/apps/keepingupwiththehoffmans/' + file.name, contents: file })
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+}
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -3051,7 +3115,7 @@ Emitter.prototype.hasListeners = function(event){
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var request = __webpack_require__(2);
@@ -3154,14 +3218,14 @@ module.exports = downloadRequest;
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var REQUEST_CONSTANTS = __webpack_require__(12);
+var REQUEST_CONSTANTS = __webpack_require__(13);
 var DropboxBase;
 
 // Polyfill Object.assign() for older browsers
-__webpack_require__(11);
+__webpack_require__(12);
 
 /**
  * @private
@@ -3339,7 +3403,7 @@ DropboxBase.prototype.setRpcRequest = function (newRpcRequest) {
 
 DropboxBase.prototype.getRpcRequest = function () {
   if (DropboxBase.prototype.rpcRequest === undefined) {
-    DropboxBase.prototype.rpcRequest = __webpack_require__(14);
+    DropboxBase.prototype.rpcRequest = __webpack_require__(15);
   }
 
   return DropboxBase.prototype.rpcRequest;
@@ -3351,7 +3415,7 @@ DropboxBase.prototype.setDownloadRequest = function (newDownloadRequest) {
 
 DropboxBase.prototype.getDownloadRequest = function () {
   if (DropboxBase.prototype.downloadRequest === undefined) {
-    DropboxBase.prototype.downloadRequest = __webpack_require__(8);
+    DropboxBase.prototype.downloadRequest = __webpack_require__(9);
   }
 
   return DropboxBase.prototype.downloadRequest;
@@ -3363,7 +3427,7 @@ DropboxBase.prototype.setUploadRequest = function (newUploadRequest) {
 
 DropboxBase.prototype.getUploadRequest = function () {
   if (DropboxBase.prototype.uploadRequest === undefined) {
-    DropboxBase.prototype.uploadRequest = __webpack_require__(15);
+    DropboxBase.prototype.uploadRequest = __webpack_require__(16);
   }
 
   return DropboxBase.prototype.uploadRequest;
@@ -3373,11 +3437,11 @@ module.exports = DropboxBase;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DropboxBase = __webpack_require__(9);
-var routes = __webpack_require__(13);
+var DropboxBase = __webpack_require__(10);
+var routes = __webpack_require__(14);
 var Dropbox;
 
 /**
@@ -3412,7 +3476,7 @@ module.exports = Dropbox;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
 // Polyfill object.assign for legacy browsers
@@ -3447,7 +3511,7 @@ if (typeof Object.assign !== 'function') {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 var REQUEST_CONSTANTS = {
@@ -3460,7 +3524,7 @@ module.exports = REQUEST_CONSTANTS;
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports) {
 
 // Auto-generated by Stone, do not modify.
@@ -4745,7 +4809,7 @@ module.exports = routes;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var request = __webpack_require__(2);
@@ -4828,7 +4892,7 @@ module.exports = rpcRequest;
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var request = __webpack_require__(2);
@@ -4899,7 +4963,7 @@ module.exports = uploadRequest;
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15159,7 +15223,7 @@ return jQuery;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -15349,7 +15413,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 
@@ -15378,7 +15442,7 @@ module.exports = function(arr, fn, initial){
 };
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -15550,7 +15614,7 @@ exports.field = function(name, val) {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 // The node and browser modules expose versions of this with the
@@ -15588,7 +15652,7 @@ module.exports = request;
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 var g;
@@ -15613,70 +15677,6 @@ try {
 
 module.exports = g;
 
-
-/***/ }),
-/* 22 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_dropbox__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_dropbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_dropbox__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lightbox2__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lightbox2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lightbox2__);
-
-
-
-const dbx = new __WEBPACK_IMPORTED_MODULE_0_dropbox___default.a(
-    {
-        accessToken: 'VMxqipghP2AAAAAAAAAAXQNBau2yjzg236l8yUzfGRGgd3rqtrZ4tf4wyViQCwle'
-    });
-
-dbx.filesListFolder({path: '/apps/keepingupwiththehoffmans'})
-  .then(function(response) {
-    console.log(response);
-    response.entries.forEach(function(entry) {
-      console.log(entry.name);
-      dbx.filesGetThumbnail({
-        path: '/apps/keepingupwiththehoffmans/' + entry.name,
-        size: {".tag":"w1024h768"}
-      })
-        .then(function(response) {
-          console.log(response);
-
-          let img = document.createElement('img');
-          img.src = window.URL.createObjectURL(response.fileBlob);
-          img.className = 'thumbnail'
-
-          let anchor = document.createElement('a');
-          anchor.href = img.src;
-          anchor.dataset.lightbox = 'gallery';
-
-          // select the modal body
-          let modalBody = document.getElementById("gallery-modal-body");
-          modalBody.appendChild(anchor);
-          anchor.appendChild(img);
-        })
-        .catch(function(error) {
-          console.log(error);
-        })
-    });
-  })
-  .catch(function(error) {
-    console.log(error);
-  });
-
-window.uploadFile = function() {
-  let fileInput = document.getElementById('file-upload');
-  let file = fileInput.files[0];
-  dbx.filesUpload({ path: '/apps/keepingupwiththehoffmans/' + file.name, contents: file })
-    .then(function(response) {
-      console.log(response);
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
-}
 
 /***/ }),
 /* 23 */
