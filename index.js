@@ -8,16 +8,12 @@ const dbx = new Dropbox(
 
 dbx.filesListFolder({path: ''})
   .then(function(response) {
-    console.log(response);
     response.entries.forEach(function(entry) {
-      console.log(entry.name);
       dbx.filesGetThumbnail({
         path: '/' + entry.name,
         size: {".tag":"w1024h768"}
       })
         .then(function(response) {
-          console.log(response);
-
           let img = document.createElement('img');
           img.src = window.URL.createObjectURL(response.fileBlob);
           img.className = 'thumbnail'

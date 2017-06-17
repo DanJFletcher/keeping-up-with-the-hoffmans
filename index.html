@@ -159,9 +159,9 @@
                         <h4 class="modal-title">Upload an Image</h4>
                     </div>
                     <div class="modal-body" id="gallery-modal-body">
-                        <form onSubmit="return uploadFile()">
+                        <form>
                             <input type="file" id="file-upload" />
-                            <button class="_btn _btn-primary" type="submit">Submit</button>
+                            <button onClick="return uploadFile()" class="_btn _btn-primary">Submit</button>
                         </form>
                     </div>
                     <div class="modal-footer">
