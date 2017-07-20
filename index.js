@@ -36,14 +36,20 @@ dbx.filesListFolder({path: ''})
     console.log(error);
   });
 
-window.uploadFile = function() {
+const uploadFile = function() {
+  console.log("uploading file...");
+  document.getElementById("submit-upload").innerHTML = "Uploading Image...";
+
   let fileInput = document.getElementById('file-upload');
   let file = fileInput.files[0];
   dbx.filesUpload({ path: '/' + file.name, contents: file })
     .then(function(response) {
       console.log(response);
+      document.getElementById("submit-upload").innerHTML = "Image Uploaded";
     })
     .catch(function(error) {
       console.log(error);
     });
 }
+
+document.getElementById("submit-upload").addEventListener("click", uploadFile);
