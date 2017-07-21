@@ -2930,10 +2930,17 @@ dbx.filesListFolder({path: ''})
   });
 
 const uploadFile = function() {
-  console.log("uploading file...");
-  document.getElementById("submit-upload").innerHTML = "Uploading Image...";
 
   let fileInput = document.getElementById('file-upload');
+
+  if (fileInput.files.length < 1) {
+    return;
+  }
+
+  console.log("uploading file...");
+
+  document.getElementById("submit-upload").innerHTML = "Uploading Image...";
+
   let file = fileInput.files[0];
   dbx.filesUpload({ path: '/' + file.name, contents: file })
     .then(function(response) {
