@@ -5,7 +5,7 @@ import vegas from 'vegas';
 $('#hero-slide-show').vegas({
   slides: [
     { src: './images/hearts_hero.jpg' },
-    { src: './images/bridal_party_with_addy.jpg' }
+    { src: './images/grump.jpg' }
   ]
 });
 

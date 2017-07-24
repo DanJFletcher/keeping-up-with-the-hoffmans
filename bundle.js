@@ -2908,7 +2908,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 $('#hero-slide-show').vegas({
   slides: [
     { src: './images/hearts_hero.jpg' },
-    { src: './images/bridal_party_with_addy.jpg' }
+    { src: './images/grump.jpg' }
   ]
 });
 
