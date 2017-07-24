@@ -1,5 +1,13 @@
 import Dropbox from 'dropbox';
 import LightBox from 'lightbox2';
+import vegas from 'vegas';
+
+$('#hero-slide-show').vegas({
+  slides: [
+    { src: './images/hearts_hero.jpg' },
+    { src: './images/bridal_party_with_addy.jpg' }
+  ]
+});
 
 const dbx = new Dropbox(
     {
